@@ -1,0 +1,9 @@
+#!/bin/sh
+find -L data \
+	-name '*.fastq' \
+| sed -r \
+	-e 's#^data/#results/#g' \
+	-e 's#_R[12].fastq$#.paired.sam#g' \
+| grep -w 'paired' \
+| sort -V \
+| uniq

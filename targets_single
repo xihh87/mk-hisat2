@@ -3,6 +3,7 @@ find -L data \
 	-name '*.fastq' \
 | sed -r \
 	-e 's#^data/#results/#g' \
-	-e 's#_R[12].fastq$#.sam#g' \
+	-e 's#_R[12].fastq$#.single.sam#g' \
+| grep -w 'unpaired' \
 | sort -V \
 | uniq
