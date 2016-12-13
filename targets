@@ -1,0 +1,8 @@
+#!/bin/sh
+find -L data \
+	-name '*.fastq' \
+| sed -r \
+	-e 's#^data/#results/#g' \
+	-e 's#_R[12].fastq$#.sam#g' \
+| sort -V \
+| uniq
